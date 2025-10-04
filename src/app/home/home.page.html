@@ -1,8 +1,43 @@
-<ion-content [fullscreen]="true">
+<ion-menu side="start" menuId="main-menu" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle>
+        <ion-item button (click)="navigateAndClose('/home')">Home</ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item button (click)="navigateAndClose('/profile')">Profile</ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item button (click)="logout('/')">Logout</ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main-content" [fullscreen]="true">
   <div id="main">
-    <strong>
-      Welcome, <span style="color: rgb(159, 57, 255)">{{name}}</span>
-    </strong>
+    <div
+      style="display: flex; justify-content: space-between; align-items: center"
+    >
+      <strong>
+        Welcome, <span style="color: rgb(159, 57, 255)">{{name}}</span>
+      </strong>
+      <div style="display: flex; flex-direction: column; cursor: pointer">
+        <ion-buttons slot="start">
+          <ion-menu-button
+            menu="main-menu"
+            style="writing-mode: vertical-rl; font-size: 30px"
+          >
+            |||
+          </ion-menu-button>
+        </ion-buttons>
+      </div>
+    </div>
     <div
       style="
         margin-top: 50px;
@@ -14,13 +49,13 @@
     >
       <!-- If this is too big or complicated than use loop -->
       <app-container
-        text="Canvas"
+        text="Calculator"
         color="white"
         bgColor="#3880ff"
         (click)="goToHome()"
       ></app-container>
       <app-container
-        text="Canvas"
+        text="SpaceCraft"
         color="white"
         bgColor="#3880ff"
         (click)="goToHome()"

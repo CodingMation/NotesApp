@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonMenu, IonList, IonItem, IonApp, IonMenuButton, IonButtons, IonMenuToggle } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import { environment } from '../../environments/environment';
 import { ContainerComponent } from '../components/container/container.component';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, ContainerComponent],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonMenu, IonList, IonItem, IonApp, IonMenuButton, IonButtons, IonMenuToggle, ContainerComponent],
 })
 
 export class HomePage {
@@ -22,7 +23,10 @@ export class HomePage {
   userData: any = null;
   name: string = '';
 
-  constructor(private router: Router) {
+  constructor(private menu: MenuController, private router: Router) {
+
+    // this.menu.enable(true, 'main-menu');
+
     this.app = initializeApp(environment.firebaseConfig);
     this.auth = getAuth(this.app);
     this.firestore = getFirestore(this.app);
@@ -61,7 +65,18 @@ export class HomePage {
     return { id: userDoc.id, ...userDoc.data() };
   }
 
-  goToHome(){
-    console.log("Click for Go To Home")
+  goToHome() {
+    console.log("Click for Go To Home");
+  }
+
+  async navigateAndClose(path: string) {
+    await this.menu.close('main-menu');
+    console.log('closed')
+    this.router.navigate([path]);
+  }
+  async logout(path: string) { 
+    await this.menu.close('main-menu');
+
+    // this.router.navigate([path]);
   }
 }
