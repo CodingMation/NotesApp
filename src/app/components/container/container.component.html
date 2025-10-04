@@ -1,0 +1,7 @@
+<!-- <div [style.color]="color" [style.background-color]="bgColor" class="container">
+  {{text}}
+</div> -->
+
+<div (click)="onClick()" [ngStyle]="{ color: color, 'background-color': bgColor }" class="container">
+  {{ text }}
+</div>

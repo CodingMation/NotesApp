@@ -1,0 +1,49 @@
+<ion-content [fullscreen]="true" color="success">
+  <div class="signup-container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>SignUp</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="inputs">
+          <ion-item>
+            <ion-input
+              type="text"
+              label="Name"
+              [(ngModel)]="name"
+              labelPlacement="floating"
+              placeholder="Enter Your Full Name"
+            ></ion-input>
+          </ion-item>
+        </div>
+        <div class="inputs">
+          <ion-item>
+            <ion-input
+              type="email"
+              label="Email"
+              [(ngModel)]="email"
+              labelPlacement="floating"
+              placeholder="Enter Your Email"
+            ></ion-input>
+          </ion-item>
+        </div>
+        <div class="inputs">
+          <ion-item>
+            <ion-input
+              type="password"
+              label="Password"
+              [(ngModel)]="password"
+              labelPlacement="floating"
+              placeholder="Enter Your Password"
+            ></ion-input>
+          </ion-item>
+        </div>
+        <app-ripple-button text="Register" color="#3880ff" (clicked)="goToHome()"></app-ripple-button>
+        <div style="text-align: center;">
+          <strong>Already have an account?</strong>
+          <span (click)="goToLogin()" style="margin-left: 4px; color: blue;">Login</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

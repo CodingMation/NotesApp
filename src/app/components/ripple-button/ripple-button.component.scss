@@ -1,0 +1,21 @@
+.ripple-parent {
+    position: relative;
+    display: block;
+    margin: 1rem 0;
+    padding: 12px 25px;
+    background-color: #3880ff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.rounded-rectangle {
+    border-radius: 4px;
+}
+
+.ripple-parent span {
+    position: relative;
+    z-index: 2;
+}
